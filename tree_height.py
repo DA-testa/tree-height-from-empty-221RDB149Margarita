@@ -4,35 +4,35 @@ import re
 from array import *
 import numpy as np
 
-def compute_height(n, parents):
+def compute_length(n, parents):
     nodes = np.zeros(n,dtype=int)
-    tree_height = 0
+    tree_length = 0
     
     for i in range(n):
         length = 0
-        par_of_i = i
+        parent_of_i = i
         while par_of_i != -1:
-            if nodes[par_of_i] != 0:
-                length += nodes[par_of_i]
+            if nodes[parent_of_i] != 0:
+                length += nodes[parent_of_i]
                 break 
             else:
                 length += 1
-                par_of_i = parents[par_of_i]
+                parent_of_i = parents[parent_of_i]
                 
         nodes[i] = length
         
-        if length > tree_height:
-            tree_height = length
+        if length > tree_length:
+            tree_length = length
 
-    return tree_height
+    return tree_length
 
 def main():
     command=input()
     parents=array('i')
     if 'I' in command:
         n=int(input())
-        par=input()
-        a=re.split(' ',par)
+        parent=input()
+        a=re.split(' ',parent)
         for x in a: 
              parents.append(int(x))
 
@@ -53,7 +53,7 @@ def main():
                      parents.append(int(x))
                    
     
-    length=compute_height(n,parents)
+    length=compute_length(n,parents)
     print(length)
     
 sys.setrecursionlimit(10**7)  
