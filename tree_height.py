@@ -11,7 +11,7 @@ def compute_length(n, parents):
     for i in range(n):
         length = 0
         parent_of_i = i
-        while par_of_i != -1:
+        while parent_of_i != -1:
             if nodes[parent_of_i] != 0:
                 length += nodes[parent_of_i]
                 break 
